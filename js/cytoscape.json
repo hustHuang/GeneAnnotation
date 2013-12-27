@@ -1,0 +1,4 @@
+{
+"cw_node_data":[{"id":"C0001117", "count":100,"ngc":"r"},{"id":"C0005388", "count":10,"ngc":"r"}]
+,"cw_edge_data":[{"id":"C0001117_C0005388_nai", "distance":0.1,"pvalue":0.1,"egc":"nai","target":"C0001117","source":"C0005388"}]
+}

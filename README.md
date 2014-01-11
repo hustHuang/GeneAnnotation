@@ -1,5 +1,5 @@
 GeneAnnotation
 ==============
-gene annotation for dolist and miniset
+gene annotation for dolist and miniset , with no UI design
 
 

@@ -7,17 +7,16 @@ gene annotation for dolist and miniset , with no UI design
 ------
 ### 项目目标
  
-处于不公开阶段
+不公开
 
 ### 涉及技术
 
-参照GeneRIFAnnotation项目
+参照GeneRIFAnnotation
 
 ### 开发人员
 
-hustHuang负责前后端开发
-
+hustHuang
 
 ### 时间
 
-2013.11 - 2014.1
+2013.11 - 2014.2

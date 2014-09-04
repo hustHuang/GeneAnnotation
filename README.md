@@ -1,15 +1,14 @@
 Gene Annotation Inference
-=========
+===
 
-gene annotation for dolist and miniset , with no UI design
+Gene annotation for dolist and miniset , with bootstrap UI framework.
 
-基因注释映射参考
-------
-### 项目目标
+---
+### 
  
 不公开
 
-### 涉及技术
+### 
 
 参照GeneRIFAnnotation
 

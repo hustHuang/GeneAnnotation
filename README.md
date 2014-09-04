@@ -4,18 +4,18 @@ Gene Annotation Inference
 Gene annotation for dolist and miniset , with bootstrap UI framework.
 
 ---
-### 
+### Target
  
 不公开
 
-### 
+### Technology
 
 参照GeneRIFAnnotation
 
-### 开发人员
+## People
 
 hustHuang
 
-### 时间
+## Time
 
 2013.11 - 2014.2

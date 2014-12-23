@@ -1,15 +1,20 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 require './common.php';
 require './class/Search.php';
-
+$type = $_POST["type"];
 $gene = $_POST["gene"];
 $search = new Search();
-$mapings = $search->get_mappings_by_gene($gene);
-echo json_encode($mapings);
+/*if($type == "dl"){
+ 	//$mapings = $search->get_mappings_by_gene($gene);
+    $mappings = $search->get_dolist_mappings_by_gene_name($gene);
+}else if($type == "ms"){
+    $mappings = $search->get_mappings_by_gene($gene);
+}*/
+
+$mappings = $search->get_mappings($gene, $type);
+
+echo json_encode($mappings);
 
 ?>

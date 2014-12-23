@@ -71,30 +71,4 @@ function get_array_from_resultset($rs){
     return $result;
 }
 
-function get_array_from_resultset_lin($rs){
-    if (!$rs || $rs->RecordCount() == 0)
-	return null;
-    
-    $result = array();
-   // $column_count = $rs->FieldCount();
-    $rs->Move(0);
-    $array_lzf=array();
-    while ($row = $rs->FetchRow()){
-	$array_of_row = array();
-            if(!in_array($row['CUI'], $array_lzf))
-            {
-            //$column_name = $rs->FetchField($i)->name;
-             array_push($array_lzf, $row['CUI']);
-             $array_of_row["STR"] = $row["STR"];
-             $array_of_row["CUI"] = $row["CUI"];
-            }
-             
-	if (count($array_of_row)==2)
-        {
-	array_push($result, $array_of_row);
-        }
-    }
-    return $result;
-    //var_dump($result);
-}
 //end of script

@@ -1,0 +1,14 @@
+<graphml xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd" xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <key id="parent" for="node" attr.name="parent" attr.type="string"/>
+  <key id="num" for="node" attr.name="num" attr.type="double"/>
+  <key id="ngc" for="node" attr.name="ngc" attr.type="string"/>
+  <key id="score" for="edge" attr.name="score" attr.type="string"/>
+  <key id="pvalue" for="edge" attr.name="pvalue" attr.type="double"/>
+  <key id="egc" for="edge" attr.name="egc" attr.type="string"/>
+  <graph edgedefault="undirected">
+    <node id="ADA">
+      <data key="ngc">q</data>
+      <data key="num">0</data>
+    </node>
+  </graph>
+</graphml>

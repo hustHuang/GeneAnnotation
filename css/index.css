@@ -1,13 +1,43 @@
 /* 
     Document   : index
     Created on : 2013-12-20, 15:50:58
-    Author     : Administrator
-    Description:
-        Purpose of the stylesheet follows.
+    Author     : Kegui Huang
+    Description: Stylesheet for index Page.
 */
-#main{
-    width: 500px;
-    height: 300px;
-    margin:120px auto;
+
+.container{
+    margin:45px auto;
+}
+.container h2{
+    margin:125px auto;
+}
+.form-search p{
+    font-size: 16px;
+}
+body p.text-center{
+    width: 100%;
+    position: absolute;
+    bottom: 15px;
+    text-align: center;
+}
+.navbar .brand{
+    color: #2B7ACD;
+    font-size: 24px;
+}
+.navbar .nav > li > a{
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
 }
 
+.navbar .nav > li> a:hover {
+    background-color: #e5e5e5;
+}
+
+.container p {
+    font-size: 14px;
+}
+#box{
+    width: 600px;
+    margin: 0px auto;
+}

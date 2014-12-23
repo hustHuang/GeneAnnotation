@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @author Lin Zhifeng
- * 2013-4-18 11:41:35
- */
-
 /* Define absolute root of the project. */
 define('ABSPATH', dirname(__FILE__) . '/');
 

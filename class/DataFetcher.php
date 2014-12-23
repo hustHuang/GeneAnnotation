@@ -106,6 +106,7 @@ class DataFetcher {
         echo $count;
     }
     
+    
 }
 
 ?>

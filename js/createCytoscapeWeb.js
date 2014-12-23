@@ -2,84 +2,95 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 var cw_options = {
     swfPath: "./swf/CytoscapeWeb",
     flashInstallerPath: "./swf/playerProductInstall",
     flashAlternateContent: '<div class="ui-state-error ui-corner-all"><p>This content requires the Adobe Flash Player.</p><p><a href="http://get.adobe.com/flashplayer/"><img width="160" height="41" border="0" alt="Get Adobe Flash Player" src="http://www.adobe.com/macromedia/style_guide/images/160x41_Get_Flash_Player.jpg"></a></p></div>'
 };
 
-
 //Mapping network groups to node colors:
 var nodeColorMapper = {
-    attrName: "ngc",                            // nodeGroupCode
+    attrName: "ngc",// nodeGroupCode
     entries: [
     {
         attrValue: "q",
         value: "#FF9086"
+        //value:"#FFFFFF"
     },      // disease nodes
 
     {
         attrValue: "r",
-        value: "#ffffff"
-    }       // drugs nodes
+        value: "#6699FF"
+    },      // disease nodes
+    {
+        attrValue: "g",
+        value: "#FFFFFF"
+    }   
     ]
 };
 
 //Mapping network groups to edge colors:
 var edgeColorMapper = {
-    attrName: "egc",                                // edgeGroupCode
+    attrName: "egc",   //edgeGroupCode
     entries: [
     {
-        attrValue: "c",
-        value: "#c3844c"
-    },          //Correlation
+        attrValue: "genetic_interactions",
+        value: "blue"
+    },	//Genetic_interactions
 
     {
-        attrValue: "ai",
-        value: "#2fb56d"
-    },         //Interaction
-
-    {
-        attrValue: "pai", 
+        attrValue: "co_expression",
         value: "green"
-    },	    //Positive Interaction
+    },  //Co_expression//#FBD10A
 
     {
-        attrValue: "nai", 
-        value: "red"
-    },	    //Negative Interaction
+        attrValue: "co_localization",
+        value: "#f4550b"
+    },  //Co_localization
 
     {
-        attrValue: "coexp",
-        value: "#FBD10A"
-    },      //Co-expression
+        attrValue: "physical_interactions",
+        value: "#cf2aea"
+    },  //Physical_interactions
 
     {
-        attrValue: "coloc",
-        value: "#6261fc"
-    },      //Co-localization
-
-    {
-        attrValue: "pi",
-        value: "#9EB5E6"
-    },         //Physical interactions
-
-    {
-        attrValue: "spd",
+        attrValue: "shared_protein_domains",
         value: "#00CCFF"
-    },        //Shared protein domains
+    },  //Shared_protein_domains
     ]
 };
 
-var colorMapper = { attrName: "distance",  minValue: "#ffff00", maxValue: "#00ff00" };
+var nodeShapeMapper = {
+    attrName: "ngc"// nodeGroupCode
+    ,entries: [
+    {
+        attrValue: "q",
+        value:"ELLIPSE"
+    },      
+    {
+        attrValue: "r",
+        value: "RECTANGLE"
+    },     
+    {
+        attrValue: "g",
+        value: "ELLIPSE"
+    }   
+    ]
+    
+};
+
 
 var cw_style = {
     global: {
-        backgroundColor:"#FFF"//,
-        //tooltipDelay: 2000
+        backgroundColor:"#FFF"
     },
     nodes : {
-        shape: "ELIPSE",
+        //shape: "ELIPSE",
+        shape: {
+            defaultValue: "ELLIPSE",
+            discreteMapper: nodeShapeMapper
+        },
         color: {
             defaultValue: "#FF9086",
             discreteMapper: nodeColorMapper
@@ -104,7 +115,6 @@ var cw_style = {
         labelFontWeight: "bold",
         tooltipFontColor: "#ffffff",
         labelGlowColor: "#ffffff",
-        //labelGlowColor:"0000cd",
         labelGlowOpacity: 1,
         labelGlowBlur: 3,
         labelGlowStrength: 20,
@@ -121,28 +131,17 @@ var cw_style = {
     },
     edges: {
         color: {
-            defaultValue: "#FBD10A"
-            //discreteMapper: colorMapper
+            discreteMapper: edgeColorMapper
         },
         width:{
-            defaultValue: 3
-           ,continuousMapper: {
-                attrName: "score",
+            //defaultValue: 3
+            //,
+            continuousMapper: {
+                attrName: "pvalue",
                 minValue: 3,
-                maxValue: 6
+                maxValue: 7
             }
         }
-        /*,
-         label: {
-            passthroughMapper: {
-               // attrName: "pvalue"
-            },
-            labelFontSize: 15,
-            labelFontWeight: "bold",
-            labelGlowColor: "#ffffff"
-           
-        }
-       */
     }
 };
 
@@ -162,7 +161,7 @@ function makeCytoscapeWebView(id, nodes_data, edges_data){
                 type : "string"
             },{
                 name: "pvalue",
-                type: "string"
+                type: "number"
             },{
                 name: "egc",
                 type: "string"
@@ -200,7 +199,7 @@ function makeCytoscapeWebView(id, nodes_data, edges_data){
         layout : {
             name : "ForceDirected",
             options : {
-               // weightAttr : "count"
+                //"weightAttr":"score"
             }
         }
     });
@@ -217,4 +216,29 @@ function handle_click(event) {
             
         }
     }
+}
+
+function layout(layout){
+    var selectedValue = layout.selectedIndex;
+    if(selectedValue == 0){
+        return;
+    }
+    
+    var layoutType = layout.options[selectedValue].text;
+    var vis_network = vis.networkModel();
+    var vis_visualStyle = vis.visualStyle();
+    vis.draw({
+        network: vis_network,
+        visualStyle : vis_visualStyle,
+        layout : {
+            name : layoutType,
+            options : {
+                //weightAttr:"score"
+            }
+        }
+    });
+    cw_has_cache = true ;
+    setTimeout(function(){
+        initFilterCytoscapeweb();
+    },1000);
 }

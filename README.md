@@ -1,21 +1,21 @@
 Gene Annotation Inference
-===
+==
 
 Gene annotation for dolist and miniset , with bootstrap UI framework.
 
 ---
-### Target
+## target
  
-不公开
 
-### Technology
+## technology
 
-参照GeneRIFAnnotation
+cystocapeweb api,jquery,ajax
 
-## People
+## people
 
-hustHuang
+loryhuang
 
-## Time
+## time
 
-2013.11 - 2014.2
+2014.2 - 2014.3
+2014.12
